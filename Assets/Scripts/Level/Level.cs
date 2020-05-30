@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public interface IFinishable {
-    void OnFihish();
+    void OnFihish(Transform position);
 }
 public class Level : MonoBehaviour, IFinishable
 {
@@ -12,14 +12,20 @@ public class Level : MonoBehaviour, IFinishable
     private LevelController levelController;
     private LevelLogic levelLogic;
 
+    private LevelManager LevelManager;
+
+    public Goal Goal;
+
     [Header("Speed of the rotation")]
     public int speed;
     
     // Start is called before the first frame update
     
     void Awake() {
+        this.LevelManager = GameObject.FindGameObjectWithTag(Tags.LEVEL_MANAGER).GetComponent<LevelManager>();
         this.levelController = new LevelController(this.transform, this.speed);
         this.levelLogic = new LevelLogic();
+        this.Goal.SetLevel(this);
     }
 
     void Update()
@@ -27,8 +33,11 @@ public class Level : MonoBehaviour, IFinishable
         this.levelController.UpdateLocation();
     }
 
-    public void OnFihish()
+    public void OnFihish(Transform transform)
     {
-        Debug.Log("Finished");
+        Vector3 position = transform.position;
+        position.y -= 90;
+
+        this.LevelManager.SpawnLevel(0, position);
     }
 }

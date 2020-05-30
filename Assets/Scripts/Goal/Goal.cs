@@ -7,16 +7,25 @@ public class Goal : MonoBehaviour
 
     private GoalLogic goalLogic;
 
-    public IFinishable level;
-   
+    private IFinishable Level;
+
+    public void SetLevel(IFinishable level)
+    {
+        this.Level = level;
+        this.goalLogic = new GoalLogic(this.Level);
+    }
 
     void Awake()
     {
-        this.goalLogic = new GoalLogic(this.level);
+        this.goalLogic = new GoalLogic(this.Level);
     }
 
-    private void OnCollisionEnter(Collision other) {
-        goalLogic.onGoalCollision(other);
+    private void OnTriggerEnter(Collider other)
+    {
+      
+            goalLogic.onGoalCollision(other);
+
     }
+ 
 
 }

@@ -10,12 +10,12 @@ public class GoalLogic
     {
         this.level = level;
     }
-    public void onGoalCollision(Collision collision)
+    public void onGoalCollision(Collider collision)
     {
 
         if (collision.gameObject.CompareTag("BALL"))
         {
-            level.OnFihish();
+            level.OnFihish(collision.gameObject.transform);
         }
     }
 
