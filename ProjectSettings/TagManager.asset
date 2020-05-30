@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BALL
   - LevelManager
+  - CameraManager
   layers:
   - Default
   - TransparentFX

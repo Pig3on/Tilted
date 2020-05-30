@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-
-    private GoalLogic goalLogic;
-
     private IFinishable Level;
+
+    private CameraManager cameraManager;
 
     public void SetLevel(IFinishable level)
     {
         this.Level = level;
-        this.goalLogic = new GoalLogic(this.Level);
     }
 
     void Awake()
     {
-        this.goalLogic = new GoalLogic(this.Level);
+        cameraManager = GameObject.FindGameObjectWithTag(Tags.CAMERA_MANAGER).GetComponent<CameraManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-      
-            goalLogic.onGoalCollision(other);
+        if (other.gameObject.CompareTag(Tags.BALL))
+        {
+            cameraManager.SwitchToPlayerView();
+            Level.OnFihish(other.gameObject.transform);
+        }
 
     }
  

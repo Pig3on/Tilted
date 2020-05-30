@@ -20,10 +20,4 @@ public class BallGenerator : MonoBehaviour
         vCamera.Follow = instance.transform;
         vCamera.LookAt = instance.transform;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

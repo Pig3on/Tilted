@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public GameObject[] Levels = null;
 
-    public CinemachineFreeLook vcam;
+    public CameraManager cameraManager;
 
     private void Start()
     {
@@ -19,7 +19,8 @@ public class LevelManager : MonoBehaviour
         {
            GameObject levelInstance = Instantiate(level, location, Quaternion.identity);
 
-            vcam.LookAt = levelInstance.transform;
+           cameraManager.SetPlayingCameraBearing(levelInstance.transform, null);
+           cameraManager.SwitchToLevelView();
         }
     }
 }
