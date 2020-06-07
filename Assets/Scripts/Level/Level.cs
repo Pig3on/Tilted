@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public interface IFinishable {
-    void OnFihish(Transform position);
-}
-public class Level : MonoBehaviour, IFinishable
+public class Level : MonoBehaviour
 {
 
     private LevelController levelController;
     private LevelLogic levelLogic;
 
-    private LevelManager LevelManager;
+    public bool demoMode;
+
+    public GameManager GameManager;
 
     public Goal Goal;
 
@@ -22,22 +21,31 @@ public class Level : MonoBehaviour, IFinishable
     // Start is called before the first frame update
     
     void Awake() {
-        this.LevelManager = GameObject.FindGameObjectWithTag(Tags.LEVEL_MANAGER).GetComponent<LevelManager>();
+
+        if(demoMode) {
+            return;
+        }
         this.levelController = new LevelController(this.transform, this.speed);
         this.levelLogic = new LevelLogic();
-        this.Goal.SetLevel(this);
+        this.GameManager = GameObject.FindGameObjectWithTag(Tags.GAME_MANAGER)?.GetComponent<GameManager>();
     }
 
     void Update()
     {
+        if(demoMode)
+        {
+            transform.Rotate(0, 20 * Time.deltaTime, 0);
+            return;
+        }
         this.levelController.UpdateLocation();
     }
 
-    public void OnFihish(Transform transform)
+    public void OnFihish()
     {
-        Vector3 position = transform.position;
-        position.y -= 90;
-
-        this.LevelManager.SpawnLevel(0, position);
+        this.GameManager.LevelFinished();
+    }
+    public void OnFail()
+    {
+        this.GameManager.LevelFailed();
     }
 }

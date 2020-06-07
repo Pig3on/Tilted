@@ -7,6 +7,9 @@ TagManager:
   - BALL
   - LevelManager
   - CameraManager
+  - GameManager
+  - Goal
+  - Fail
   layers:
   - Default
   - TransparentFX

@@ -6,21 +6,42 @@ public class LevelManager : MonoBehaviour
 {
     public GameObject[] Levels = null;
 
+    //todo create a object pool
+    private GameObject currentLevel = null;
+
     public CameraManager cameraManager;
 
-    private void Start()
+    private void Awake()
     {
         Levels = Resources.LoadAll<GameObject>("Levels");
     }
-    public void SpawnLevel(int id, Vector3 location)
+    public void SpawnLevel(int id, bool isDemo = false)
     {
+        Debug.Log(Levels.Length);
         GameObject level = Levels[id];
         if(level != null)
         {
-           GameObject levelInstance = Instantiate(level, location, Quaternion.identity);
+           GameObject levelInstance = Instantiate(level, this.transform);
 
-           cameraManager.SetPlayingCameraBearing(levelInstance.transform, null);
-           cameraManager.SwitchToLevelView();
+            levelInstance.GetComponent<Level>().demoMode = isDemo;
+            currentLevel = levelInstance;
+            if (cameraManager != null) {
+
+                cameraManager.SetPlayingCameraBearing(levelInstance.transform, null);
+                cameraManager.SwitchToLevelView();
+            }
         }
+    }
+
+    public void RemoveCurrentLevel() {
+        if(currentLevel != null)
+        {
+            Destroy(currentLevel);
+        }
+    }
+
+    public int GetTotalLevels()
+    {
+        return Levels.Length;
     }
 }

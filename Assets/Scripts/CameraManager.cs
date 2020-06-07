@@ -18,7 +18,7 @@ public class CameraManager : MonoBehaviour
     }
     public void SwitchToPlayerView() {
 
-        Debug.Log("Switched");
+     
         playingCameraObj.SetActive(false);
         playerCameraObj.SetActive(true);
     }
@@ -37,6 +37,17 @@ public class CameraManager : MonoBehaviour
         if (follow != null)
         {
             this.playingCamera.Follow = follow;
+        }
+    }
+    public void SetPlayerCameraBearing(Transform lookAt, Transform follow)
+    {
+        if (lookAt != null)
+        {
+            this.playerCamera.LookAt = lookAt;
+        }
+        if (follow != null)
+        {
+            this.playerCamera.Follow = follow;
         }
     }
 }

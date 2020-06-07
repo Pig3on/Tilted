@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    private IFinishable Level;
-
     private CameraManager cameraManager;
 
-    public void SetLevel(IFinishable level)
-    {
-        this.Level = level;
-    }
+    public Level parent;
 
     void Awake()
     {
-        cameraManager = GameObject.FindGameObjectWithTag(Tags.CAMERA_MANAGER).GetComponent<CameraManager>();
+        if (!parent.demoMode)
+        {
+            cameraManager = GameObject.FindGameObjectWithTag(Tags.CAMERA_MANAGER)?.GetComponent<CameraManager>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +21,7 @@ public class Goal : MonoBehaviour
         if (other.gameObject.CompareTag(Tags.BALL))
         {
             cameraManager.SwitchToPlayerView();
-            Level.OnFihish(other.gameObject.transform);
+            parent.OnFihish();
         }
 
     }

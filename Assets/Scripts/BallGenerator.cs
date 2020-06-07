@@ -7,17 +7,25 @@ public class BallGenerator : MonoBehaviour
 {
     public GameObject ballPrefab = null;
 
-    public CinemachineFreeLook vCamera;
+    private CameraManager CameraManager;
+    public Level parent;
 
+    private void Awake()
+    {
+        this.CameraManager = GameObject.FindGameObjectWithTag(Tags.CAMERA_MANAGER)?.GetComponent<CameraManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        createBall();
-
+        if (!parent.demoMode)
+        {
+            createBall();
+        }
     }
     void createBall(){
         GameObject instance = Instantiate(ballPrefab,this.transform.position,this.transform.rotation);
-        vCamera.Follow = instance.transform;
-        vCamera.LookAt = instance.transform;
+        CameraManager.SetPlayingCameraBearing(null, instance.transform);
+        CameraManager.SetPlayerCameraBearing(instance.transform, instance.transform);
+        CameraManager.SwitchToLevelView();
     }
 }
