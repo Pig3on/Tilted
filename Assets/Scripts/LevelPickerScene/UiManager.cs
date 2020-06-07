@@ -22,7 +22,7 @@ namespace LevelPickerScene
 
         public void StartLevel()
         {
-            SceneManager.LoadScene("PlayingScene");
+            SceneManager.LoadScene(Scenes.PLAYING_SCENE);
         }
 
 
@@ -48,6 +48,10 @@ namespace LevelPickerScene
             title.text = "Level: " + (LevelPickerData.CurrentPickedLevel + 1);
             LevelManager.RemoveCurrentLevel();
             LevelManager.SpawnLevel(LevelPickerData.CurrentPickedLevel, true);
+        }
+        public void OnBackPress()
+        {
+            SceneManager.LoadScene(Scenes.MAIN_MENU);
         }
     }
 }
