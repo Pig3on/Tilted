@@ -24,7 +24,7 @@ public class BallGenerator : MonoBehaviour
     }
     void createBall(){
         GameObject instance = Instantiate(ballPrefab,this.transform.position,this.transform.rotation);
-        CameraManager.SetPlayingCameraBearing(null, instance.transform);
+        CameraManager.SetPlayingCameraBearing(instance.transform, instance.transform);
         CameraManager.SetPlayerCameraBearing(instance.transform, instance.transform);
         CameraManager.SwitchToLevelView();
     }

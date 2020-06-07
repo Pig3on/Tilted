@@ -24,7 +24,11 @@ public class LevelController
         float transX = Input.GetAxis("Horizontal") * speed;
         float transY = Input.GetAxis("Vertical") * speed;
 
-        transform.Rotate(transY * Time.deltaTime, 0, transX * Time.deltaTime);
+        Vector3 targetDirection = new Vector3(transY * Time.deltaTime, 0f, transX * Time.deltaTime);
+        targetDirection = Camera.main.transform.TransformDirection(targetDirection);
+        targetDirection.y = 0.0f;
+
+        transform.Rotate(targetDirection);
     }
 
     private Quaternion ConvertRightHandedToLeftHandedQuaternion(Quaternion rightHandedQuaternion)
