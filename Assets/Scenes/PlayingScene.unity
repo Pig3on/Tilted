@@ -1448,7 +1448,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 900, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &918693283
 MonoBehaviour:
@@ -2560,6 +2560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelManager: {fileID: 1646497083}
   cameraManager: {fileID: 992741321}
+  SoundManager: {fileID: 0}
   UiManager: {fileID: 380809265}
   levelDone: 0
   isPaused: 0

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public LevelManager LevelManager;
     public CameraManager cameraManager;
+    public SoundManager SoundManager;
     public UiManager UiManager;
     public bool levelDone;
     public bool isPaused = false;
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
         Debug.Log(pickedLevel);
 
         LevelManager.SpawnLevel(pickedLevel);
+
+        this.SoundManager = GameObject.FindGameObjectWithTag(Tags.SOUND_MANAGER)?.GetComponent<SoundManager>();
     }
 
 
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour
             levelDone = true;
             cameraManager.SwitchToPlayerView();
             UiManager.ShowWinScreen();
+            SoundManager.PlayClip(Clips.CLAP);
         }
        
     }
@@ -58,6 +62,7 @@ public class GameManager : MonoBehaviour
             levelDone = true;
             cameraManager.SwitchToPlayerView();
             UiManager.ShowGameOver();
+            SoundManager.PlayClip(Clips.AWW);
         }
     
     }

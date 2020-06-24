@@ -413,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   demoMode: 0
   GameManager: {fileID: 0}
+  SoundManager: {fileID: 0}
   Goal: {fileID: 1468037265984876740}
   speed: 50
 --- !u!1 &1468037265984876737
@@ -471,8 +472,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6947188, y: 1.1842284, z: 1.6280727}
-  m_Center: {x: 0.09300399, y: -0.09211421, z: -0.029972315}
+  m_Size: {x: 1.6947188, y: 1.5011132, z: 1.6280727}
+  m_Center: {x: 0.09300399, y: -0.09331834, z: -0.029972315}
 --- !u!1 &5741745926462300305
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5741745926462300305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.17, z: 0}
+  m_LocalPosition: {x: 0, y: -7.13, z: 0}
   m_LocalScale: {x: 48.58304, y: 1.603344, z: 42.41137}
   m_Children: []
   m_Father: {fileID: 1468037265915829995}
