@@ -21,3 +21,9 @@ public static class Scenes
     public static string PLAYING_SCENE = "PlayingScene";
     public static string LEVEL_PICKER_SCENE = "LevelPickerScene";
 }
+
+public static class PrefKeys
+{
+    public static string VOLUME = "VOLUME";
+    public static string USE_PROCESSING = "USE_PROCESSING";
+}

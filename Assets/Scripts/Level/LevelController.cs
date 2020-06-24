@@ -5,17 +5,10 @@ public class LevelController
 {
     private Transform transform;
     private int speed;
-    private Quaternion origin = Quaternion.identity;
-
-
-
     public LevelController(Transform transform, int speed)
     {
-        this.origin = Input.gyro.attitude;
         this.transform = transform;
         this.speed = speed;
-
-        Input.gyro.enabled = true;
     }
 
 
@@ -29,14 +22,6 @@ public class LevelController
         targetDirection.y = 0.0f;
 
         transform.Rotate(targetDirection);
-    }
-
-    private Quaternion ConvertRightHandedToLeftHandedQuaternion(Quaternion rightHandedQuaternion)
-    {
-        return new Quaternion(-rightHandedQuaternion.x,
-                               -rightHandedQuaternion.z,
-                               -rightHandedQuaternion.y,
-                                rightHandedQuaternion.w);
     }
 }
 
