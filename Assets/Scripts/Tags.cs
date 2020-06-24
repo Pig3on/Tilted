@@ -7,6 +7,7 @@ public static class Tags {
     public static string CAMERA_MANAGER = "CameraManager";
     public static string GOAL = "Goal";
     public static string FAIL = "Fail";
+    public static string SOUND_MANAGER = "SoundManager";
 }
 
 public static class Buttons
@@ -26,4 +27,10 @@ public static class PrefKeys
 {
     public static string VOLUME = "VOLUME";
     public static string USE_PROCESSING = "USE_PROCESSING";
+}
+
+public enum Clips
+{
+    AWW=1,
+    CLAP=2,
 }

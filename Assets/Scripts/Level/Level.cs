@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
     public bool demoMode;
 
     public GameManager GameManager;
+    public SoundManager SoundManager;
 
     public Goal Goal;
 
@@ -28,6 +29,7 @@ public class Level : MonoBehaviour
         this.levelController = new LevelController(this.transform, this.speed);
         this.levelLogic = new LevelLogic();
         this.GameManager = GameObject.FindGameObjectWithTag(Tags.GAME_MANAGER)?.GetComponent<GameManager>();
+        this.SoundManager = GameObject.FindGameObjectWithTag(Tags.SOUND_MANAGER)?.GetComponent<SoundManager>();
     }
 
     void Update()
@@ -43,9 +45,12 @@ public class Level : MonoBehaviour
     public void OnFihish()
     {
         this.GameManager.LevelFinished();
+        this.SoundManager.PlayClip(Clips.CLAP);
+
     }
     public void OnFail()
     {
         this.GameManager.LevelFailed();
+        this.SoundManager.PlayClip(Clips.AWW);
     }
 }

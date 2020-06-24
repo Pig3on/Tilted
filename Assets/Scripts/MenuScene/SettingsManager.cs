@@ -8,6 +8,8 @@ namespace MenuScene
     {
         public Slider volumeSlider;
         public Toggle processingToggle;
+
+        public SoundManager soundManager;
         // Start is called before the first frame update
 
         private void Start()
@@ -15,11 +17,9 @@ namespace MenuScene
             float volume = PlayerPrefs.GetFloat(PrefKeys.VOLUME);
             bool useProcessing = PlayerPrefs.GetInt(PrefKeys.USE_PROCESSING) == 1;
 
-            Debug.Log(volume);
-            Debug.Log(useProcessing);
-          
-                volumeSlider.value = volume;
- 
+            volumeSlider.value = volume;
+
+            soundManager.SetVolumeSound(volume);
             processingToggle.isOn = useProcessing;
         }
         public void onVolumeChange()
@@ -27,6 +27,8 @@ namespace MenuScene
             
             //todo chnge volume
             PlayerPrefs.SetFloat(PrefKeys.VOLUME, volumeSlider.value);
+
+            soundManager.SetVolumeSound(volumeSlider.value);
 
         }
 

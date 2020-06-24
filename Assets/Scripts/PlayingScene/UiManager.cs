@@ -23,13 +23,13 @@ namespace PlayingScene
 
         public void ShowGameOver()
         {
-            label.text = "Oh no!";
+            label.text = "Quite Unfortunate";
             GameOverPanel.SetActive(true);
         }
 
         public void ShowWinScreen()
         {
-            label.text = "You win";
+            label.text = "Splendid";
             GameOverPanel.SetActive(true);
         }
 
