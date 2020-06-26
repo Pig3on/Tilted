@@ -5,10 +5,9 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
 
-    public int force = 2;
+    public int force = 5;
 
     private Rigidbody rigidbodyComponent;
-    private bool isGrounded = true;
   
 
     private void Awake()
@@ -18,22 +17,17 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton(Buttons.JUMP) && isGrounded)
+        if (Physics.Raycast(transform.position, -Vector3.up, 1f))
         {
-            Vector3 velocity = rigidbodyComponent.velocity;
-            velocity.y = 0f;
-            rigidbodyComponent.velocity = velocity;
-            rigidbodyComponent.AddForce(Vector3.up * force, ForceMode.Impulse);
+            if (Input.GetButtonDown(Buttons.JUMP))
+            {
+                Vector3 velocity = rigidbodyComponent.velocity;
+                velocity.y = 0f;
+                rigidbodyComponent.velocity = velocity;
+                rigidbodyComponent.AddForce(Vector3.up * force, ForceMode.Impulse);
+            }
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        isGrounded = true;
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        isGrounded = false;
+       
     }
 
     private void OnTriggerEnter(Collider other)

@@ -123,3 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81330beb4bdc640e0a728ba4cf8fe7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force: 5
+  isGrounded: 1
