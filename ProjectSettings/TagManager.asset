@@ -11,6 +11,7 @@ TagManager:
   - Goal
   - Fail
   - SoundManager
+  - Counter
   layers:
   - Default
   - TransparentFX

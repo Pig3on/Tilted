@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
     public bool demoMode;
 
     public GameManager GameManager;
+    public TimeManager TimeManager;
     public SoundManager SoundManager;
 
     public Goal Goal;
@@ -29,7 +30,7 @@ public class Level : MonoBehaviour
         this.levelController = new LevelController(this.transform, this.speed);
         this.levelLogic = new LevelLogic();
         this.GameManager = GameObject.FindGameObjectWithTag(Tags.GAME_MANAGER)?.GetComponent<GameManager>();
-        
+        this.TimeManager = GameObject.FindGameObjectWithTag(Tags.TIME_MANAGER)?.GetComponent<TimeManager>();
     }
 
     void Update()
@@ -46,12 +47,19 @@ public class Level : MonoBehaviour
     {
         Debug.Log("FInished");
         this.GameManager.LevelFinished();
-       
+        this.TimeManager.StopCount();
+
 
     }
     public void OnFail()
     {
         Debug.Log("DFail");
         this.GameManager.LevelFailed();
+        this.TimeManager.StopCount();
+    }
+
+    public void OnStart()
+    {
+        this.TimeManager.StartCount();
     }
 }

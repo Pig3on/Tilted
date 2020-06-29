@@ -10,6 +10,8 @@ namespace PlayingScene
         public Text label;
         public GameObject GameOverPanel;
 
+        public Text timer;
+
         public void OnRestartScene()
         {
             Time.timeScale = 1;
@@ -41,6 +43,11 @@ namespace PlayingScene
         public void HidePause()
         {
             GameOverPanel.SetActive(false);
+        }
+
+        public void ShowTime(string time)
+        {
+            timer.text = time;
         }
 
     }

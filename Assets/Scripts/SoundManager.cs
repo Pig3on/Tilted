@@ -56,11 +56,18 @@ public class SoundManager : MonoBehaviour
     }
     public void SetVolumeSound(float volume)
     {
-        AudioSourceSoundtrack.volume = volume;
+        if (AudioSourceSoundtrack)
+        {
+            AudioSourceSoundtrack.volume = volume;
+        }
     }
 
     public void SetSFXSound(float volume)
     {
-        AudioSourceEffect.volume = volume;
+        if (AudioSourceEffect)
+        {
+            AudioSourceEffect.volume = volume;
+        }
+       
     }
 }

@@ -13,6 +13,7 @@ public class ShowcaseDone : MonoBehaviour
         if (!level.demoMode)
         {
             cinemachineObject.SetActive(false);
+            level.OnStart();
         }
     }
 }
