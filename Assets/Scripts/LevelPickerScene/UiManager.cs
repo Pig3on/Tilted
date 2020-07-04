@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,13 +12,22 @@ namespace LevelPickerScene
         // Start is called before the first frame update
         public LevelManager LevelManager;
 
+        private SaveManager SaveManager;
+
         public Text title;
+        public Text finished;
+        public Text tiltCount;
+        public Text time;
 
         // Start is called before the first frame update
         void Start()
         {
-            title.text = "Level: " + (LevelPickerData.CurrentPickedLevel + 1);
-            LevelManager.SpawnLevel(LevelPickerData.CurrentPickedLevel, true);
+            title.text = "Level: " + (LevelPickerData.GetCurrentLevel() + 1);
+            LevelManager.SpawnLevel(LevelPickerData.GetCurrentLevel(), true);
+            SaveManager = GameObject.FindGameObjectWithTag(Tags.STORAGE_MANAGER)?.GetComponent<SaveManager>();
+            this.CheckScore();
+
+            LevelPickerData.SetMaxLevels(LevelManager.GetTotalLevels());
         }
 
         public void StartLevel()
@@ -28,26 +38,63 @@ namespace LevelPickerScene
 
         public void NextLevelPress()
         {
-            if (LevelPickerData.CurrentPickedLevel + 1 >= LevelManager.GetTotalLevels())
+            if (LevelPickerData.GetCurrentLevel() + 1 >= LevelManager.GetTotalLevels())
             {
                 return;
             }
-            LevelPickerData.CurrentPickedLevel += 1;
-            title.text = "Level: " + (LevelPickerData.CurrentPickedLevel + 1);
+           
+            try
+            {
+                LevelPickerData.GetNextLevel();
+            }
+            catch (Exception)
+            {
+                //nothing
+            }
+            title.text = "Level: " + (LevelPickerData.GetCurrentLevel() + 1);
             LevelManager.RemoveCurrentLevel();
-            LevelManager.SpawnLevel(LevelPickerData.CurrentPickedLevel, true);
+            LevelManager.SpawnLevel(LevelPickerData.GetCurrentLevel(), true);
+            this.CheckScore();
+          }
+
+        private void CheckScore()
+        {
+            LevelScore score;
+            SaveManager.GetScore().TryGetValue(LevelPickerData.GetCurrentLevel(), out score);
+            if (score == null)
+            {
+                finished.text = "Not Completed";
+                tiltCount.gameObject.SetActive(false);
+                time.gameObject.SetActive(false);
+            }
+            else
+            {
+                finished.text = "Completed";
+                tiltCount.text = score.NumberOfTilts + " tilts";
+                time.text = score.TimeInSeconds + " seconds";
+                tiltCount.gameObject.SetActive(true);
+                time.gameObject.SetActive(true);
+            }
         }
 
         public void PrevLevelPress()
         {
-            if (LevelPickerData.CurrentPickedLevel - 1 < 0)
+            if (LevelPickerData.GetCurrentLevel() - 1 < 0)
             {
                 return;
             }
-            LevelPickerData.CurrentPickedLevel -= 1;
-            title.text = "Level: " + (LevelPickerData.CurrentPickedLevel + 1);
+            try
+            {
+                LevelPickerData.GetPreviousLevel();
+            }
+            catch (Exception)
+            {
+                //nothing
+            }
+            title.text = "Level: " + (LevelPickerData.GetCurrentLevel() + 1);
             LevelManager.RemoveCurrentLevel();
-            LevelManager.SpawnLevel(LevelPickerData.CurrentPickedLevel, true);
+            LevelManager.SpawnLevel(LevelPickerData.GetCurrentLevel(), true);
+            this.CheckScore();
         }
         public void OnBackPress()
         {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayingScene;
 using System.Diagnostics;
+using System;
+
 public class TimeManager : MonoBehaviour
 {
     public UiManager uiManager;
@@ -17,10 +19,19 @@ public class TimeManager : MonoBehaviour
     {
         stopwatch.Stop();
     }
+    public void Reset()
+    {
+        stopwatch.Reset();
+    }
 
     // Update is called once per frame
     void Update()
     {
         uiManager.ShowTime(stopwatch.Elapsed.ToString());
+    }
+
+    public TimeSpan GetTime()
+    {
+        return stopwatch.Elapsed;
     }
 }

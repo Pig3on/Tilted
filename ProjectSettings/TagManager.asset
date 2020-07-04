@@ -12,6 +12,7 @@ TagManager:
   - Fail
   - SoundManager
   - Counter
+  - StorageManager
   layers:
   - Default
   - TransparentFX

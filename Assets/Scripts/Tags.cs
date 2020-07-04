@@ -9,6 +9,7 @@ public static class Tags {
     public static string FAIL = "Fail";
     public static string SOUND_MANAGER = "SoundManager";
     public static string TIME_MANAGER = "Counter";
+    public static string STORAGE_MANAGER = "StorageManager";
 }
 
 public static class Buttons

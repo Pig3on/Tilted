@@ -416,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   demoMode: 0
   GameManager: {fileID: 0}
+  TimeManager: {fileID: 0}
   SoundManager: {fileID: 0}
   Goal: {fileID: 1468037265984876740}
   speed: 50
@@ -517,7 +518,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2501522392895148031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8556ff653e5e94f7e89bb296d28e8ea1, type: 3}
+  m_Script: {fileID: 11500000, guid: d8d5d84d6eb334f9d8f6c032e0501fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1468037265915829994}
@@ -649,7 +650,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5117159763183634818}
-  m_LocalRotation: {x: 0.21386366, y: 0.6693619, z: -0.21064413, w: 0.67959255}
+  m_LocalRotation: {x: 0.2138636, y: 0.66936195, z: -0.21064407, w: 0.6795926}
   m_LocalPosition: {x: 14.676462, y: 15.2572, z: -10.44152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -741,7 +742,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5117159763183634818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c30aa88efc7491ba967452c61c43c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 573031cfe86e74ff395fbcc092149569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 1468037265915829994}

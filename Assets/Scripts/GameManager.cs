@@ -3,24 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using PlayingScene;
+using UnityEngine.SceneManagement;
+using System;
+
 public class GameManager : MonoBehaviour
 {
     public LevelManager LevelManager;
     public CameraManager cameraManager;
     public SoundManager SoundManager;
     public UiManager UiManager;
+    public TiltsCounter tiltsCounter;
+    public TimeManager TimeManager;
+    private SaveManager SaveManager;
     public bool levelDone;
     public bool isPaused = false;
     private void Awake()
     {
         Debug.Log("spawning");
-        int pickedLevel = LevelPickerData.CurrentPickedLevel;
+        int pickedLevel = LevelPickerData.GetCurrentLevel();
 
         Debug.Log(pickedLevel);
 
         LevelManager.SpawnLevel(pickedLevel);
 
         this.SoundManager = GameObject.FindGameObjectWithTag(Tags.SOUND_MANAGER)?.GetComponent<SoundManager>();
+        this.SaveManager = GameObject.FindGameObjectWithTag(Tags.STORAGE_MANAGER)?.GetComponent<SaveManager>();
     }
 
 
@@ -52,6 +59,12 @@ public class GameManager : MonoBehaviour
             cameraManager.SwitchToPlayerView();
             UiManager.ShowWinScreen();
             SoundManager.PlayClip(Clips.CLAP);
+
+            LevelScore score = new LevelScore();
+
+            score.NumberOfTilts = tiltsCounter.tilts;
+            score.TimeInSeconds = TimeManager.GetTime().TotalSeconds;
+            SaveManager.SaveScore(LevelPickerData.GetCurrentLevel(), score);
         }
        
     }
@@ -65,5 +78,18 @@ public class GameManager : MonoBehaviour
             SoundManager.PlayClip(Clips.AWW);
         }
     
+    }
+
+    public void LoadNextLevel()
+    {
+        try
+        {
+            LevelPickerData.GetNextLevel();
+            SceneManager.LoadScene(Scenes.PLAYING_SCENE);
+        }catch (Exception)
+        {
+            SceneManager.LoadScene(Scenes.LEVEL_PICKER_SCENE);
+        }
+       
     }
 }
