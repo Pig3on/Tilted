@@ -10,7 +10,7 @@ namespace MenuScene
         public GameObject SettingsPanel;
         // Start is called before the first frame update
         public void StartGame() {
-            SceneManager.LoadScene("LevelPickerScene");
+            SceneManager.LoadScene(Scenes.LEVEL_PICKER_SCENE);
         }
         public void Settings()
         {

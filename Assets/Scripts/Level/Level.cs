@@ -7,7 +7,6 @@ public class Level : MonoBehaviour
 {
 
     private LevelController levelController;
-    private LevelLogic levelLogic;
 
     public bool demoMode;
 
@@ -28,7 +27,6 @@ public class Level : MonoBehaviour
             return;
         }
         this.levelController = new LevelController(this.transform, this.speed);
-        this.levelLogic = new LevelLogic();
         this.GameManager = GameObject.FindGameObjectWithTag(Tags.GAME_MANAGER)?.GetComponent<GameManager>();
         this.TimeManager = GameObject.FindGameObjectWithTag(Tags.TIME_MANAGER)?.GetComponent<TimeManager>();
     }
@@ -45,7 +43,6 @@ public class Level : MonoBehaviour
 
     public void OnFihish()
     {
-        Debug.Log("FInished");
         this.GameManager.LevelFinished();
         this.TimeManager.StopCount();
 
@@ -53,7 +50,6 @@ public class Level : MonoBehaviour
     }
     public void OnFail()
     {
-        Debug.Log("DFail");
         this.GameManager.LevelFailed();
         this.TimeManager.StopCount();
     }

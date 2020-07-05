@@ -16,9 +16,9 @@ public class SoundManager : MonoBehaviour
     {
         if (!Instance)
         {
-            music = Resources.Load<AudioClip>("Sounds/OST");
-            aww = Resources.Load<AudioClip>("Sounds/Aww");
-            clap = Resources.Load<AudioClip>("Sounds/Clap");
+            music = Resources.Load<AudioClip>(Sounds.OST);
+            aww = Resources.Load<AudioClip>(Sounds.AWW);
+            clap = Resources.Load<AudioClip>(Sounds.CLAP);
             AudioSource[] sources = GetComponents<AudioSource>();
 
 

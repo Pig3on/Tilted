@@ -17,7 +17,6 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnLevel(int id, bool isDemo = false)
     {
-        Debug.Log(Levels.Length);
         GameObject level = Levels[id];
         if(level != null)
         {

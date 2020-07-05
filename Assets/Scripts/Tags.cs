@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public static class Tags {
     public static string BALL = "BALL";
     public static string LEVEL_MANAGER = "LevelManager";
@@ -35,4 +33,10 @@ public enum Clips
 {
     AWW=1,
     CLAP=2,
+}
+
+public static class Sounds { 
+    public static string AWW = "Sounds/Aww";
+    public static string CLAP = "Sounds/Clap";
+    public static string OST = "Sounds/OST";
 }
