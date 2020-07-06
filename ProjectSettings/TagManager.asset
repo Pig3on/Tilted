@@ -13,6 +13,7 @@ TagManager:
   - SoundManager
   - Counter
   - StorageManager
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX

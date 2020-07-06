@@ -72,7 +72,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978546360470653555}
-  m_LocalRotation: {x: 0.17480704, y: -0.021879787, z: 0.0038855418, w: 0.98435193}
+  m_LocalRotation: {x: -0.24929462, y: 0.25431618, z: -0.068028376, w: -0.93195903}
   m_LocalPosition: {x: -34.78746, y: 12.434012, z: 12.422852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
+  m_LookAt: {fileID: 2981047078835052924}
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
@@ -130,10 +130,10 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -2764629134566555501, guid: 7671649166890483693335cf88a11602, type: 2}
-    value: {fileID: 387141921851135321}
   - key: {fileID: -236886843923845721, guid: 7671649166890483693335cf88a11602, type: 2}
     value: {fileID: 294251220921542475}
+  - key: {fileID: -5914263300766110554, guid: 7671649166890483693335cf88a11602, type: 2}
+    value: {fileID: 387141921851135321}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &387141921851135321
@@ -1417,7 +1417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6907030716740979083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.61, y: 6.55, z: 8.3}
+  m_LocalPosition: {x: 9.61, y: 20.51, z: 8.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2977198516941921182}
@@ -1442,7 +1442,7 @@ MonoBehaviour:
     width: 0.2
   m_Looped: 0
   m_Waypoints:
-  - position: {x: 0.6860771, y: 0.26814747, z: -18.377993}
+  - position: {x: 0.6860771, y: 0.26814842, z: -30.866169}
     roll: 0
   - position: {x: 1.2186823, y: -0.64481544, z: -8.64125}
     roll: 0
