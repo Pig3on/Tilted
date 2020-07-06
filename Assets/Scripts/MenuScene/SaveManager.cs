@@ -53,13 +53,21 @@ public class SaveManager : MonoBehaviour
 
     public void SaveScore(int level, LevelScore score)
     {
-      
-       
-        if (levelScoreDict.ContainsKey(level))
+
+        LevelScore currentScore;
+
+        levelScoreDict.TryGetValue(level, out currentScore);
+ 
+        if(currentScore == null)
         {
+            levelScoreDict.Add(level, score);
+        }else if(score.NumberOfTilts < currentScore.NumberOfTilts)
+        {
+            
             levelScoreDict.Remove(level);
+            levelScoreDict.Add(level, score);
         }
-        levelScoreDict.Add(level, score);
+       
         this.SaveScoreToDisk();
     }
 }
