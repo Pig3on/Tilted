@@ -7,6 +7,7 @@ namespace MenuScene
     public class SettingsManager : MonoBehaviour
     {
         public Slider volumeSlider;
+        public Slider SFXSlider;
         public Toggle processingToggle;
 
         public SoundManager soundManager;
@@ -15,11 +16,13 @@ namespace MenuScene
         private void Start()
         {
             float volume = PlayerPrefs.GetFloat(PrefKeys.VOLUME);
+            float sfxVolume = PlayerPrefs.GetFloat(PrefKeys.SFX_VALUE);
             bool useProcessing = PlayerPrefs.GetInt(PrefKeys.USE_PROCESSING) == 1;
 
             volumeSlider.value = volume;
 
             soundManager.SetVolumeSound(volume);
+            soundManager.SetSFXSound(sfxVolume);
             processingToggle.isOn = useProcessing;
         }
         public void onVolumeChange()
@@ -29,6 +32,17 @@ namespace MenuScene
             PlayerPrefs.SetFloat(PrefKeys.VOLUME, volumeSlider.value);
 
             soundManager.SetVolumeSound(volumeSlider.value);
+
+        }
+
+        public void onSFXChange()
+        {
+
+            //todo chnge volume
+            PlayerPrefs.SetFloat(PrefKeys.SFX_VALUE, SFXSlider.value);
+
+            soundManager.SetSFXSound(SFXSlider.value);
+            soundManager.PlayClip(Clips.AWW);
 
         }
 

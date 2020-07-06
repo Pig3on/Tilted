@@ -22,8 +22,8 @@ public class SoundManager : MonoBehaviour
             AudioSource[] sources = GetComponents<AudioSource>();
 
 
-            AudioSourceSoundtrack = sources[0];
-            AudioSourceEffect = sources[1];
+            AudioSourceSoundtrack = sources[1];
+            AudioSourceEffect = sources[0];
             float volume = PlayerPrefs.GetFloat(PrefKeys.VOLUME);
             AudioSourceSoundtrack.volume = volume == 0 ? 100: volume;
 

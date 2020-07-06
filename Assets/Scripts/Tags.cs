@@ -27,6 +27,7 @@ public static class PrefKeys
 {
     public static string VOLUME = "VOLUME";
     public static string USE_PROCESSING = "USE_PROCESSING";
+    public static string SFX_VALUE = "SFX_VOLUME";
 }
 
 public enum Clips
